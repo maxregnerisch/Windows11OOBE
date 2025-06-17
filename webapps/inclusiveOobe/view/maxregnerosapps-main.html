@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/inclusive-common.css" />
+    <!-- WinJS references -->
+    <script src="/Microsoft.WinJS-reduced/js/base.js"></script>
+
+    <!-- requirejs references -->
+    <script src="/core/js/require-helpers.js"></script>
+    <script src="/core/js/requirePath-config-core.js"></script>
+    <script data-main="/webapps/inclusiveOobe/js/maxregnerosapps-page.js" src="/lib/require.js"></script>
+</head>
+<body class="webapp-inner" data-bind="oobeHotKeys: optinHotKey">
+    <div class="body-container" data-bind="oobePageDefaultAction: pageDefaultAction">
+        <div class="container-content no-scroll">
+            <oobe-header params="title: $root.title, subtitle: $root.subtitle"></oobe-header>
+            <div class="content-box">
+                <div class="maxregneros-apps-container">
+                    <div class="apps-intro">
+                        <p data-bind="text: $root.introText"></p>
+                    </div>
+                    
+                    <div class="apps-grid">
+                        <!-- ko foreach: $root.apps -->
+                        <div class="app-card" data-bind="click: $parent.toggleApp, css: { 'selected': selected }">
+                            <div class="app-icon">
+                                <span class="icon" data-bind="css: iconClass"></span>
+                            </div>
+                            <div class="app-info">
+                                <h4 class="app-name" data-bind="text: name"></h4>
+                                <p class="app-description" data-bind="text: description"></p>
+                            </div>
+                            <div class="app-checkbox">
+                                <input type="checkbox" data-bind="checked: selected, attr: { id: 'app-' + id }" />
+                                <label data-bind="attr: { for: 'app-' + id }"></label>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    
+                    <div class="apps-summary">
+                        <p data-bind="text: $root.summaryText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <oobe-footer params="flexEndButtons: $root.flexEndButtons, flexStartHyperLinks: $root.flexStartHyperLinks"></oobe-footer>
+    </div>
+    
+    <style>
+        .maxregneros-apps-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .apps-intro {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .app-card {
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .app-card:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: rgba(168, 85, 247, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .app-card.selected {
+            background: rgba(124, 58, 237, 0.3);
+            border-color: #A855F7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+        
+        .app-icon {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #7C3AED, #A855F7);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .app-icon .icon {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .app-info {
+            flex: 1;
+        }
+        
+        .app-name {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+        
+        .app-description {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+        
+        .app-checkbox {
+            flex-shrink: 0;
+        }
+        
+        .app-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #A855F7;
+        }
+        
+        .apps-summary {
+            text-align: center;
+            padding: 20px;
+            background: rgba(45, 27, 105, 0.3);
+            border-radius: 8px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+        
+        .apps-summary p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        @media (max-width: 768px) {
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-info {
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+</html>

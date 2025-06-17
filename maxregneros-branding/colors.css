@@ -1,0 +1,108 @@
+/* MaxRegneRos Custom Color Scheme */
+/* Replacing Microsoft's #005a9e blue with MaxRegneRos branding colors */
+
+:root {
+    /* Primary MaxRegneRos Colors */
+    --maxregneros-primary: #2D1B69;        /* Deep Purple - Main brand color */
+    --maxregneros-secondary: #7C3AED;      /* Bright Purple - Accent color */
+    --maxregneros-accent: #A855F7;         /* Light Purple - Highlights */
+    --maxregneros-dark: #1E1B4B;           /* Dark Purple - Backgrounds */
+    --maxregneros-light: #C4B5FD;          /* Very Light Purple - Text on dark */
+    
+    /* Gradient Colors */
+    --maxregneros-gradient-start: #2D1B69;
+    --maxregneros-gradient-middle: #7C3AED;
+    --maxregneros-gradient-end: #A855F7;
+    
+    /* Text Colors */
+    --maxregneros-text-primary: #FFFFFF;
+    --maxregneros-text-secondary: #E5E7EB;
+    --maxregneros-text-accent: #C4B5FD;
+    
+    /* Interactive Elements */
+    --maxregneros-button-primary: #7C3AED;
+    --maxregneros-button-hover: #A855F7;
+    --maxregneros-button-active: #6D28D9;
+    
+    /* Status Colors */
+    --maxregneros-success: #10B981;
+    --maxregneros-warning: #F59E0B;
+    --maxregneros-error: #EF4444;
+    
+    /* Background Variations */
+    --maxregneros-bg-primary: linear-gradient(135deg, var(--maxregneros-gradient-start) 0%, var(--maxregneros-gradient-middle) 50%, var(--maxregneros-gradient-end) 100%);
+    --maxregneros-bg-secondary: rgba(45, 27, 105, 0.9);
+    --maxregneros-bg-overlay: rgba(45, 27, 105, 0.4);
+}
+
+/* Global Background Override */
+html {
+    background: var(--maxregneros-bg-primary) !important;
+    color: var(--maxregneros-text-primary) !important;
+}
+
+body {
+    background: var(--maxregneros-bg-primary) !important;
+    color: var(--maxregneros-text-primary) !important;
+}
+
+/* Button Overrides */
+.control-button,
+.button_primary,
+button,
+input[type="button"],
+input[type="submit"] {
+    background-color: var(--maxregneros-button-primary) !important;
+    border-color: var(--maxregneros-button-primary) !important;
+    color: var(--maxregneros-text-primary) !important;
+}
+
+.control-button:hover,
+.button_primary:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: var(--maxregneros-button-hover) !important;
+    border-color: var(--maxregneros-button-hover) !important;
+}
+
+.control-button:active,
+.button_primary:active,
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+    background-color: var(--maxregneros-button-active) !important;
+    border-color: var(--maxregneros-button-active) !important;
+}
+
+/* Link Colors */
+a, a:link, a:visited {
+    color: var(--maxregneros-accent) !important;
+}
+
+a:hover, a:focus {
+    color: var(--maxregneros-light) !important;
+}
+
+/* Progress Bar */
+progress {
+    color: var(--maxregneros-secondary) !important;
+}
+
+/* Selection and Highlight Colors */
+::selection {
+    background-color: var(--maxregneros-secondary) !important;
+    color: var(--maxregneros-text-primary) !important;
+}
+
+/* Input Fields */
+input, select, textarea {
+    background-color: var(--maxregneros-bg-overlay) !important;
+    border-color: var(--maxregneros-accent) !important;
+    color: var(--maxregneros-text-primary) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--maxregneros-secondary) !important;
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.3) !important;
+}
